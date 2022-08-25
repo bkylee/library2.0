@@ -5,23 +5,6 @@ let Book = class{
         this.pages = pages;
         this.read = read;
     };
-    get title(){
-        return this.title;
-    };
-    get author(){
-        return this.author;
-    };
-    get pages (){
-        return this.pages;
-    };
-    get read(){
-        return this.read;
-    };
-
-    set read(read){
-        this.read = read;
-    };
-
     info(){
         return `${title} by ${author}, ${pages} pages, ${read}`;
     };
@@ -41,9 +24,12 @@ function addBook(){
     library.push(book);
 }
 
-const showBooks = (library)=>{
-    const wrapper = document.getElementById('wrapper');
-    library.forEach((book)=>{
+const showBook = (library)=>{
+    const display = document.getElementById('display');
+    // display.querySelectorAll('*').forEach(node=>{node.remove()});   
+    const index = library.length - 1;
+    const book = library[index];
+
         const bookCard = document.createElement('div');
         //show title
         const title  = document.createElement('div');
@@ -61,22 +47,23 @@ const showBooks = (library)=>{
         bookCard.appendChild(pages);
 
         //If read or not 
-        const read = document.createElement('checkbox');
+        const read = document.createElement('input');
         const label = document.createElement('label');
         label.setAttribute('for','Read');
         label.textContent = "Read";
         read.setAttribute('id', 'Read');
+        read.setAttribute('type','checkbox');
         book.read === "yes" ? read.setAttribute('value', 'yes') : read.setAttribute('value', 'no');
-        bookCard.appendChild('label');
-        bookCard.appendChild('read');
+        bookCard.appendChild(label);
+        bookCard.appendChild(read);
 
-        //append bookCard to wrapper
-        wrapper.appendChild('bookCard');
-    });
-};
+        //append bookCard to display
+        display.appendChild(bookCard);
+    };
 
 const submit = document.querySelector('#submit');
+
 submit.addEventListener('click', ()=>{
     addBook();
-    showBooks();
+    showBook(library);
 });
