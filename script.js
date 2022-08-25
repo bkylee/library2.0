@@ -44,10 +44,11 @@ function addBook(){
 const showBooks = (library)=>{
     const wrapper = document.getElementById('wrapper');
     library.forEach((book)=>{
+        const bookCard = document.createElement('div');
         //show title
         const title  = document.createElement('div');
         title.textContent = `Title: ${book.title}`;
-        document.body.appendChild(title);
+        bookCard.appendChild(title);
        
         //author
     const author = document.createElement('div');
@@ -59,11 +60,23 @@ const showBooks = (library)=>{
         pages.textContent = `Pages: ${book.pages}`;
         bookCard.appendChild(pages);
 
+        //If read or not 
         const read = document.createElement('checkbox');
         const label = document.createElement('label');
         label.setAttribute('for','Read');
         label.textContent = "Read";
         read.setAttribute('id', 'Read');
         book.read === "yes" ? read.setAttribute('value', 'yes') : read.setAttribute('value', 'no');
+        bookCard.appendChild('label');
+        bookCard.appendChild('read');
+
+        //append bookCard to wrapper
+        wrapper.appendChild('bookCard');
     });
-}
+};
+
+const submit = document.querySelector('#submit');
+submit.addEventListener('click', ()=>{
+    addBook();
+    showBooks();
+});
