@@ -47,6 +47,23 @@ const showBooks = (library)=>{
         //show title
         const title  = document.createElement('div');
         title.textContent = `Title: ${book.title}`;
+        document.body.appendChild(title);
+       
+        //author
+    const author = document.createElement('div');
+        author.textContent = `Author: ${book.author}`;
+        bookCard.appendChild(author);
 
-    })
+        //number of pages 
+    const pages = document.createElement('div');
+        pages.textContent = `Pages: ${book.pages}`;
+        bookCard.appendChild(pages);
+
+        const read = document.createElement('checkbox');
+        const label = document.createElement('label');
+        label.setAttribute('for','Read');
+        label.textContent = "Read";
+        read.setAttribute('id', 'Read');
+        book.read === "yes" ? read.setAttribute('value', 'yes') : read.setAttribute('value', 'no');
+    });
 }
