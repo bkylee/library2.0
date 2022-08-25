@@ -55,7 +55,7 @@ const showBook = (library)=>{
         label.textContent = "Read";
         read.setAttribute('id', 'Read');
         read.setAttribute('type','checkbox');
-        book.readValue == true ? read.checked : read.checked = false;
+        book.read.checked == true ? read.checked=true : read.checked = false;
         bookCard.appendChild(label);
         bookCard.appendChild(read);
 
