@@ -14,10 +14,12 @@ const library = [];
 
 function addBook(){    
     //get for contents for card 
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = Number(document.getElementById('pages').value);
-    let read = document.getElementById('read').value;
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = Number(document.getElementById('pages').value);
+    const read = document.getElementById('read');
+    let readValue = null;
+    read.checked == true ? readValue = true : readValue = false;
     
     //add values from text input into object, add object to library
     const book = new Book(title,author,pages, read);
@@ -53,7 +55,7 @@ const showBook = (library)=>{
         label.textContent = "Read";
         read.setAttribute('id', 'Read');
         read.setAttribute('type','checkbox');
-        book.read === "yes" ? read.setAttribute('value', 'yes') : read.setAttribute('value', 'no');
+        book.readValue == true ? read.checked : read.checked = false;
         bookCard.appendChild(label);
         bookCard.appendChild(read);
 
