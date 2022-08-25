@@ -28,7 +28,6 @@ function addBook(){
 
 const showBook = (library)=>{
     const display = document.getElementById('display');
-    // display.querySelectorAll('*').forEach(node=>{node.remove()});   
     const index = library.length - 1;
     const book = library[index];
 
@@ -63,9 +62,20 @@ const showBook = (library)=>{
         display.appendChild(bookCard);
     };
 
+//reset library and screen 
+    const reset = (library)=>{
+        library.length = 0;
+        const display = document.getElementById('display');
+        display.querySelectorAll('*').forEach(node=>{node.remove()});   
+    }
+
 const submit = document.querySelector('#submit');
 
 submit.addEventListener('click', ()=>{
     addBook();
     showBook(library);
 });
+
+const resetButton = document.querySelector('#reset');
+
+resetButton.addEventListener('click', ()=>reset(library));
